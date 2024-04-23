@@ -17,7 +17,7 @@ public class Markets {
     private Long id;
     private String name;
     private String address; //
-    private Set<DayOfWeek> openigDays; //Dias en los que se presta el servicio
+    private Set<DayOfWeek> openingDays; //Dias en los que se presta el servicio,m se usa "Set" para asegurar que los días no se repitan
     private LocalTime openingTime; // Hora de apertura
     private LocalTime closingTime; // Horar de cierre
     private boolean stationary; // Mercado fijo, que siempre está en el mismo lugar
@@ -29,12 +29,12 @@ public class Markets {
     public Markets() {
     }
 
-    public Markets(Long id, String name, String address, Set<DayOfWeek> openigDays, LocalTime openingTime,
+    public Markets(Long id, String name, String address, Set<DayOfWeek> openingDays, LocalTime openingTime,
                    LocalTime closingTime, boolean stationary, boolean itinerant, String products) {
         this.id = id;
         this.name = name;
         this.address = address;
-        this.openigDays = openigDays;
+        this.openingDays = openingDays;
         this.openingTime = openingTime;
         this.closingTime = closingTime;
         this.stationary = stationary;
@@ -68,12 +68,12 @@ public class Markets {
         this.address = address;
     }
 
-    public Set<DayOfWeek> getOpenigDays() {
-        return openigDays;
+    public Set<DayOfWeek> getOpeningDays() {
+        return openingDays;
     }
 
-    public void setOpenigDays(Set<DayOfWeek> openigDays) {
-        this.openigDays = openigDays;
+    public void setOpeningDays(Set<DayOfWeek> openingDays) {
+        this.openingDays = openingDays;
     }
 
     public LocalTime getOpeningTime() {
@@ -124,7 +124,7 @@ public class Markets {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", address='" + address + '\'' +
-                ", openigDays=" + openigDays +
+                ", openigDays=" + openingDays +
                 ", openingTime=" + openingTime +
                 ", closingTime=" + closingTime +
                 ", stationary=" + stationary +

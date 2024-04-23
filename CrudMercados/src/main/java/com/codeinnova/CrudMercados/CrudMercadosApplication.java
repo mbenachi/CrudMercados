@@ -1,5 +1,6 @@
 package com.codeinnova.CrudMercados;
 
+import com.codeinnova.CrudMercados.Entities.Markets;
 import com.codeinnova.CrudMercados.Repository.MarketsRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,6 +13,12 @@ public class CrudMercadosApplication {
 
 		ApplicationContext context = SpringApplication.run(CrudMercadosApplication.class, args);
 		MarketsRepository repository = context.getBean(MarketsRepository.class);
+
+		//Create market
+
 	}
+
+
+
 
 }
