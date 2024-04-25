@@ -1,0 +1,130 @@
+{
+	"info": {
+		"_postman_id": "6c766121-4c15-4b7d-84f7-d2b7ce8beef7",
+		"name": "CrudMercados",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34418091"
+	},
+	"item": [
+		{
+			"name": "api/markets",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/markets",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"markets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/markets/2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/markets/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"markets",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/markets",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"name\": \"Donde Pablito\",\r\n    \"address\": \"Calle 48 #3\",\r\n    \"openingDays\": [\r\n        \"SUNDAY\"\r\n    ],\r\n    \"openingTime\": \"06:30:00\",\r\n    \"closingTime\": \"14:00:00\",\r\n    \"stationary\": false,\r\n    \"itinerant\": true,\r\n    \"fruit\": true,\r\n    \"porkMeat\": false,\r\n    \"cowMeat\": false,\r\n    \"fish\": true,\r\n    \"vegetables\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/markets",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"markets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/markets",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 3,\r\n    \"name\": \"Donde Tulia actualizado desde Postman\",\r\n    \"address\": \"Calle 48 #3\",\r\n    \"openingDays\": [\r\n        \"SUNDAY\"\r\n    ],\r\n    \"openingTime\": \"06:30:00\",\r\n    \"closingTime\": \"14:00:00\",\r\n    \"stationary\": false,\r\n    \"itinerant\": true,\r\n    \"fruit\": true,\r\n    \"porkMeat\": false,\r\n    \"cowMeat\": false,\r\n    \"fish\": false,\r\n    \"vegetables\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/markets",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"markets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/markets/1",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/markets/15",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"markets",
+						"15"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

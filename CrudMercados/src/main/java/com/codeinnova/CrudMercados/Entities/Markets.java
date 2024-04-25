@@ -22,7 +22,11 @@ public class Markets {
     private LocalTime closingTime; // Horar de cierre
     private boolean stationary; // Mercado fijo, que siempre está en el mismo lugar
     private boolean itinerant; // Mercado no fijo
-    private String products; // productos disponibles
+    private boolean fruit;
+    private boolean porkMeat;
+    private boolean cowMeat;
+    private boolean fish;
+    private boolean vegetables;
 
     //Constructores
 
@@ -30,7 +34,8 @@ public class Markets {
     }
 
     public Markets(Long id, String name, String address, Set<DayOfWeek> openingDays, LocalTime openingTime,
-                   LocalTime closingTime, boolean stationary, boolean itinerant, String products) {
+                   LocalTime closingTime, boolean stationary, boolean itinerant, boolean fruit, boolean porkMeat,
+                   boolean cowMeat, boolean fish, boolean vegetables) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -39,7 +44,11 @@ public class Markets {
         this.closingTime = closingTime;
         this.stationary = stationary;
         this.itinerant = itinerant;
-        this.products = products;
+        this.fruit = fruit;
+        this.porkMeat = porkMeat;
+        this.cowMeat = cowMeat;
+        this.fish = fish;
+        this.vegetables = vegetables;
     }
 
     //Getter & Setter
@@ -108,15 +117,49 @@ public class Markets {
         this.itinerant = itinerant;
     }
 
-    public String getProducts() {
-        return products;
+    public boolean isFruit() {
+        return fruit;
     }
 
-    public void setProducts(String products) {
-        this.products = products;
+    public void setFruit(boolean fruit) {
+        this.fruit = fruit;
     }
+
+    public boolean isPorkMeat() {
+        return porkMeat;
+    }
+
+    public void setPorkMeat(boolean porkMeat) {
+        this.porkMeat = porkMeat;
+    }
+
+    public boolean isCowMeat() {
+        return cowMeat;
+    }
+
+    public void setCowMeat(boolean cowMeat) {
+        this.cowMeat = cowMeat;
+    }
+
+    public boolean isFish() {
+        return fish;
+    }
+
+    public void setFish(boolean fish) {
+        this.fish = fish;
+    }
+
+    public boolean isVegetables() {
+        return vegetables;
+    }
+
+    public void setVegetables(boolean vegetables) {
+        this.vegetables = vegetables;
+    }
+
 
     //ToString
+
 
     @Override
     public String toString() {
@@ -124,12 +167,16 @@ public class Markets {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", address='" + address + '\'' +
-                ", openigDays=" + openingDays +
+                ", openingDays=" + openingDays +
                 ", openingTime=" + openingTime +
                 ", closingTime=" + closingTime +
                 ", stationary=" + stationary +
                 ", itinerant=" + itinerant +
-                ", products='" + products + '\'' +
+                ", fruit=" + fruit +
+                ", porkMeat=" + porkMeat +
+                ", cowMeat=" + cowMeat +
+                ", fish=" + fish +
+                ", vegetables=" + vegetables +
                 '}';
     }
 }
