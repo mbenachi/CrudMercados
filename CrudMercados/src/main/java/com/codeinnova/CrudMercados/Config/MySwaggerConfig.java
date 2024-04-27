@@ -40,9 +40,8 @@ public class MySwaggerConfig implements WebMvcConfigurer {
                                 .url("https://www.youtube.com/watch?v=ndenXpxSA9A")));
     }
 
+/*  OPCION UNO (NO FUNCIONA)
 
-
-/*  OPCIÓN UNO (NO FUNCIONA)
     public Docket api(){ //esta clase es la interfaz principal al framework de springfox
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiDetails())
@@ -67,8 +66,8 @@ public class MySwaggerConfig implements WebMvcConfigurer {
 
     }
 
- */
-    /* OPCIÓN DOS (NO FUNCIONA)
+    OPCION DOS (NO FUNCIONA)
+
 
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
@@ -89,6 +88,5 @@ public class MySwaggerConfig implements WebMvcConfigurer {
     }
 
      */
-
 
 }

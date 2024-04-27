@@ -24,7 +24,7 @@ public class MarketsController {
         this.marketsRepository = marketsRepository;
     }
 
-//CRUD
+    //CRUD
 
     // Search all
 
@@ -33,7 +33,7 @@ public class MarketsController {
         //Recuperar y devolver los mercados de la DB
         return marketsRepository.findAll();
     }
-    // Search one for ID
+    // Search for ID
 
     @GetMapping("api/markets/{id}")
     public ResponseEntity<Markets> findOneById(@PathVariable Long id) {
@@ -45,8 +45,7 @@ public class MarketsController {
             return ResponseEntity.notFound().build();
     }
 
-
-    // FILTRO
+            // FILTRO
 
     @GetMapping("/api/markets/stationary")
     public List<Markets> findStationaryMarkets() {
@@ -65,6 +64,7 @@ public class MarketsController {
                 .collect(Collectors.toList());
         return itinerantMarkets;
     }
+
     // Create market in DB
 
     @PostMapping("/api/markets")

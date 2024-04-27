@@ -67,5 +67,4 @@ public class CrudMercadosApplication {
 		System.out.println("Markets in the database " + repository.findAll().size());
 
 	}
-
 }
