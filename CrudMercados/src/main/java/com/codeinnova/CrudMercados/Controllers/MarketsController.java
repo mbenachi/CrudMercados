@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 public class MarketsController {
@@ -19,10 +20,11 @@ public class MarketsController {
     private MarketsRepository marketsRepository; // Atributo
 
     public MarketsController(MarketsRepository marketsRepository) {
+
         this.marketsRepository = marketsRepository;
     }
 
-//CRUD
+    //CRUD
 
     // Search all
 
@@ -31,18 +33,38 @@ public class MarketsController {
         //Recuperar y devolver los mercados de la DB
         return marketsRepository.findAll();
     }
-    // Search one for ID
+    // Search for ID
 
     @GetMapping("api/markets/{id}")
     public ResponseEntity<Markets> findOneById(@PathVariable Long id) {
-
-        Optional<Markets> marketOptional = marketsRepository.findById(id);
-
+        Optional<Markets> marketOptional = marketsRepository.findById(id); //El Optional es para incluir en la busqueda los ID existentes y los nulos (if y else),
+                                                        // si se pone un valor nulo arrojará un not found por el ResponseEntity
         if (marketOptional.isPresent())
             return ResponseEntity.ok(marketOptional.get());
         else
             return ResponseEntity.notFound().build();
     }
+
+            // FILTRO
+
+    @GetMapping("/api/markets/stationary")
+    public List<Markets> findStationaryMarkets() {
+        List<Markets> allMarkets = marketsRepository.findAll();
+        List<Markets> stationaryMarkets = allMarkets.stream()
+                .filter(market -> market.isStationary())
+                .collect(Collectors.toList());
+        return stationaryMarkets;
+    }
+
+    @GetMapping("/api/markets/itinerant")
+    public List<Markets> findItinerantMarkets() {
+        List<Markets> allMarkets = marketsRepository.findAll();
+        List<Markets> itinerantMarkets = allMarkets.stream()
+                .filter(market -> market.isItinerant())
+                .collect(Collectors.toList());
+        return itinerantMarkets;
+    }
+
     // Create market in DB
 
     @PostMapping("/api/markets")
