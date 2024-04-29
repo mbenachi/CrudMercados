@@ -2,7 +2,6 @@ package com.codeinnova.CrudMercados.Entities;
 
 import jakarta.persistence.*;
 
-
 import java.time.DayOfWeek;
 import java.time.LocalTime;
 import java.util.Set;
