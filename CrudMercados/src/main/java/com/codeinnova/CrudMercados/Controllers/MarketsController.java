@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 @RestController
 public class MarketsController {
 
-    private final Logger log = LoggerFactory.getLogger(MarketsController.class); //Creando el log
+    private final Logger log = LoggerFactory.getLogger(MarketsController.class);
 
     private MarketsRepository marketsRepository; // Atributo
 
@@ -30,7 +30,7 @@ public class MarketsController {
 
     @GetMapping("/api/markets")
     public List<Markets> findAll(){
-        //Recuperar y devolver los mercados de la DB
+
         return marketsRepository.findAll();
     }
     // Search for ID

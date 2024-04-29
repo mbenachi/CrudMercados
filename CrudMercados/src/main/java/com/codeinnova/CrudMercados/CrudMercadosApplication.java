@@ -5,8 +5,6 @@ import com.codeinnova.CrudMercados.Repository.MarketsRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;
@@ -15,8 +13,6 @@ import java.util.Set;
 
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.codeinnova.CrudMercados", "org.springdoc"}) // Escanea los componentes de la aplicación y de Springdoc
-@EnableJpaRepositories(basePackages = {"com.codeinnova.CrudMercados.Repository"}) // Habilita la exploración de los repositorios JPA
 public class CrudMercadosApplication {
 
 	public static void main(String[] args) {
