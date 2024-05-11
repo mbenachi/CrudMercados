@@ -8,9 +8,7 @@ import java.util.Set;
 
 @Entity
 public class Markets {
-
-    // Atributos
-
+    
     //Atributos
 
     @Id
@@ -49,7 +47,7 @@ public class Markets {
         this.contact = contact;
     }
     //GETTER AND SETTER
-
+    
     public Long getId() {
         return id;
     }

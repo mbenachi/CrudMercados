@@ -54,6 +54,7 @@ public class MarketsController {
                 .filter(market -> market.isOnlyCash()) //  "filter" evalúa si un mercado es estacionario o no
                 .collect(Collectors.toList()); //Si en el funto anterior hay stacionarios pasaran el filtro y se coleccionaran en una lista
         return onlyCash;
+
     }
 
     // Create market in DB
