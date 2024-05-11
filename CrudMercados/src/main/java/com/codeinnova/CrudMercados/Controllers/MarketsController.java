@@ -47,22 +47,13 @@ public class MarketsController {
 
             // FILTRO
 
-    @GetMapping("/api/markets/stationary")
-    public List<Markets> findStationaryMarkets() {
-        List<Markets> allMarkets = marketsRepository.findAll();
-        List<Markets> stationaryMarkets = allMarkets.stream()
-                .filter(market -> market.isStationary())
-                .collect(Collectors.toList());
-        return stationaryMarkets;
-    }
-
-    @GetMapping("/api/markets/itinerant")
-    public List<Markets> findItinerantMarkets() {
-        List<Markets> allMarkets = marketsRepository.findAll();
-        List<Markets> itinerantMarkets = allMarkets.stream()
-                .filter(market -> market.isItinerant())
-                .collect(Collectors.toList());
-        return itinerantMarkets;
+    @GetMapping("/api/markets/onlyCash")
+    public List<Markets> findOnlyCash() {
+        List<Markets> allMarkets = marketsRepository.findAll(); // Recupera todos los mercados y los almacena en la lista allMarkets.
+        List<Markets> onlyCash = allMarkets.stream() // "stream" (flujo) permite tomar los datos de allMarkets y realizar operaciones en ellos, como filtrarlos
+                .filter(market -> market.isOnlyCash()) //  "filter" evalúa si un mercado es estacionario o no
+                .collect(Collectors.toList()); //Si en el funto anterior hay stacionarios pasaran el filtro y se coleccionaran en una lista
+        return onlyCash;
     }
 
     // Create market in DB
