@@ -7,7 +7,7 @@ import java.time.LocalTime;
 import java.util.Set;
 
 @Entity
-@Table(name = "Markets")
+@Table(name = "Markets")//viendo la logica que estamos contruyento tal vez sea mejor el singular "Market" ya que en ralidad el el modelo de 1 mercado
 public class Markets {
 
     // Atributos
@@ -16,6 +16,10 @@ public class Markets {
     private Long id;
     private String name;
     private String address; //
+
+    //es bueno agrupar atributos por secciones
+    //con el refactor dimos el ejemplo, ya que pusimos  una sola variable global
+    //que contiene toda la info de los horarios del mercado y de los dias que tienen abierto
     private Set<DayOfWeek> openingDays; //Dias en los que se presta el servicio,m se usa "Set" para asegurar que los días no se repitan
     private LocalTime openingTime; // Hora de apertura
     private LocalTime closingTime; // Horar de cierre
@@ -51,6 +55,10 @@ public class Markets {
     }
 
     //Getter & Setter
+
+    //aqui luego vamos a comenzar a validar cositas
+    //imagina que cuando hagamos codigo mas robusto no vamos a permitir hacer un set de una variable incorrecta
+    //asi por ejemplo a tu variable name no la vamos a permitir poner numeros ya que sabemos qu eno hay nombres con numeros
 
     public Long getId() {
         return id;

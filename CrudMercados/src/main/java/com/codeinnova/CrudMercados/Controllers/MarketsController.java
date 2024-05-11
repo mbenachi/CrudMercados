@@ -50,6 +50,11 @@ public class MarketsController {
     @GetMapping("/api/markets/stationary")
     public List<Markets> findStationaryMarkets() {
         List<Markets> allMarkets = marketsRepository.findAll();
+
+        //entiendes la logica de las cuatro lineas siguientes?
+        //por ahora no necesitamos ser tan eficientes en codigo y usar funciones muy avanzadas si no las sabemos manejar
+        //esto puede generar en algunos casos mucho mas consumo de recursos y puede generar fallos en computadores sin memoria
+        //hazlo facil y ve cada vez mas mejorando tu codigo
         List<Markets> stationaryMarkets = allMarkets.stream()
                 .filter(market -> market.isStationary())
                 .collect(Collectors.toList());
@@ -59,6 +64,8 @@ public class MarketsController {
     @GetMapping("/api/markets/itinerant")
     public List<Markets> findItinerantMarkets() {
         List<Markets> allMarkets = marketsRepository.findAll();
+
+        //mismo comentario que el filtro anterior
         List<Markets> itinerantMarkets = allMarkets.stream()
                 .filter(market -> market.isItinerant())
                 .collect(Collectors.toList());
@@ -113,3 +120,7 @@ public class MarketsController {
     }
 
 }
+
+// muy buen codigoooooooo, un codigo limpio, con buena sintaxis en la nomenclatura, bien adaptado todo lo del video a
+// nuestras necesidades actuales
+// BIEN HECHO MARCEEEEEE
