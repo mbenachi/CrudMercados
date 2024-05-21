@@ -47,29 +47,14 @@ public class MarketsController {
 
             // FILTRO
 
-    @GetMapping("/api/markets/stationary")
-    public List<Markets> findStationaryMarkets() {
-        List<Markets> allMarkets = marketsRepository.findAll();
+    @GetMapping("/api/markets/onlyCash")
+    public List<Markets> findOnlyCash() {
+        List<Markets> allMarkets = marketsRepository.findAll(); // Recupera todos los mercados y los almacena en la lista allMarkets.
+        List<Markets> onlyCash = allMarkets.stream() // "stream" (flujo) permite tomar los datos de allMarkets y realizar operaciones en ellos, como filtrarlos
+                .filter(market -> market.isOnlyCash()) //  "filter" evalúa si un mercado es estacionario o no
+                .collect(Collectors.toList()); //Si en el funto anterior hay stacionarios pasaran el filtro y se coleccionaran en una lista
+        return onlyCash;
 
-        //entiendes la logica de las cuatro lineas siguientes?
-        //por ahora no necesitamos ser tan eficientes en codigo y usar funciones muy avanzadas si no las sabemos manejar
-        //esto puede generar en algunos casos mucho mas consumo de recursos y puede generar fallos en computadores sin memoria
-        //hazlo facil y ve cada vez mas mejorando tu codigo
-        List<Markets> stationaryMarkets = allMarkets.stream()
-                .filter(market -> market.isStationary())
-                .collect(Collectors.toList());
-        return stationaryMarkets;
-    }
-
-    @GetMapping("/api/markets/itinerant")
-    public List<Markets> findItinerantMarkets() {
-        List<Markets> allMarkets = marketsRepository.findAll();
-
-        //mismo comentario que el filtro anterior
-        List<Markets> itinerantMarkets = allMarkets.stream()
-                .filter(market -> market.isItinerant())
-                .collect(Collectors.toList());
-        return itinerantMarkets;
     }
 
     // Create market in DB
@@ -120,7 +105,3 @@ public class MarketsController {
     }
 
 }
-
-// muy buen codigoooooooo, un codigo limpio, con buena sintaxis en la nomenclatura, bien adaptado todo lo del video a
-// nuestras necesidades actuales
-// BIEN HECHO MARCEEEEEE

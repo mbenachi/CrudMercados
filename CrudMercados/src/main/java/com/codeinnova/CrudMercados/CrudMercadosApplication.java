@@ -1,15 +1,13 @@
 package com.codeinnova.CrudMercados;
 
-import com.codeinnova.CrudMercados.Entities.Markets;
+import com.codeinnova.CrudMercados.Entities.*;
 import com.codeinnova.CrudMercados.Repository.MarketsRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
-import java.time.DayOfWeek;
 import java.time.LocalTime;
-import java.util.HashSet;
-import java.util.Set;
+
 
 
 @SpringBootApplication
@@ -22,35 +20,68 @@ public class CrudMercadosApplication {
 
 		//Create markets
 
-		 	//Market1
-		Set<DayOfWeek> openingDays1 = new HashSet<>();
-		openingDays1.add(DayOfWeek.MONDAY);
-		openingDays1.add(DayOfWeek.TUESDAY);
-		openingDays1.add(DayOfWeek.WEDNESDAY);
-		openingDays1.add(DayOfWeek.THURSDAY);
-		openingDays1.add(DayOfWeek.FRIDAY);
-		openingDays1.add(DayOfWeek.SATURDAY);
-		openingDays1.add(DayOfWeek.SUNDAY);
+		//Market1
 
-		Markets market1 = new Markets(null, "Pedro Market", "Calle 5 #7-38", openingDays1, LocalTime.of(8, 0),
-				LocalTime.of(20, 0), true, false, true, true, true, false, true);
+		Markets market1 = new Markets();
+		market1.setName("Pedro Market");
+		market1.setEstablishment(true);
+		market1.setOnlyCash(false);
+		market1.setLocation(new MarketLocation(1234L, 13243L, "Calle 5 #7-23"));
+		market1.setOperatingHours(new MarketOperatingHours(
+				true, LocalTime.of(07, 00), LocalTime.of(21, 00),
+				true, LocalTime.of(07, 00), LocalTime.of(21, 00),
+				true, LocalTime.of(07, 00), LocalTime.of(21, 00),
+				true, LocalTime.of(07, 00), LocalTime.of(21, 00),
+				true, LocalTime.of(07, 00), LocalTime.of(21, 00),
+				false, null, null,
+				true, LocalTime.of(06, 00), LocalTime.of(20, 30)));
+		market1.setProducts(new MarketProducts(true, true, false, true, true,
+				true, false, true, true, false, true, false,
+				true, true, false, true, true, true, true,
+				true, false, true, true, true, false, true,
+				false, true, true, true, true, false, true,
+				true, true, true, true, true, true, true, true,
+				true, false, false, false, false, false, false,
+				false, true, true, false, true, true, true, false,
+				true, true, false, true, false, true,
+				true, false, true, true, true, true, true,
+				false, true, true, true, false, true, false, true,
+				true, true, true, false, true, true, true, true,
+				false, true, false, true, true, true,
+				true, false, true, false));
+		market1.setQualification(new MarketQualification(4.8F, "Good sugar"));
+		market1.setContact(new MarketContact("pedro@gmail.com", 123456L));
 
-			//Market2
-
-		Set<DayOfWeek> openingDays2 = new HashSet<>();
-		openingDays2.add(DayOfWeek.THURSDAY);
-		openingDays2.add(DayOfWeek.SUNDAY);
-
-		Markets market2 = new Markets(null, "Pedriño", "Calle 6 #8-54", openingDays2, LocalTime.of(6, 30),
-				LocalTime.of(16, 0), false, true, true, false, false, false, true);
-
-			//Market3
-
-		Set<DayOfWeek> openingDays3 = new HashSet<>();
-		openingDays3.add(DayOfWeek.SUNDAY);
-
-		Markets market3 = new Markets(null, "Donde Tulia", "Calle 48 #3", openingDays3, LocalTime.of(6, 30),
-				LocalTime.of(14, 0), false, true, true, false, false, false, true);
+		//Market2
+		Markets market2 = new Markets();
+		market2.setName("AZ Market");
+		market2.setEstablishment(false);
+		market2.setOnlyCash(true);
+		market2.setLocation(new MarketLocation( 5678L, 987L, "Parqueadero del barrio Los Naranjos"));
+		market2.setOperatingHours(new MarketOperatingHours(
+				false, null, null,
+				false, null, null,
+				false, null, null,
+				false, null, null,
+				false, null, null,
+				true, LocalTime.of(06, 00), LocalTime.of(14, 00),
+				true, LocalTime.of(06, 00), LocalTime.of(14, 00)));
+		market2.setProducts(new MarketProducts(true, true,false, true,true,
+				true,false, true,true,false, true, false,
+				true,true, false,true,true,true,true,
+				true,false, true,true,true, false,true,
+				false, true,true,true,true, false, true,
+				true,true,true,true,true,true,true,true,
+				true, false, false, false, false, false, false,
+				false, true, true,false, true,true,true,false,
+				true,true,false, true, false, true,
+				true, false,true,true,true,true,true,
+				false, true,true,true, false,true, false, true,
+				true,true,true, false, true,true,true,true,
+				false,true, false, true,true,true,
+				true, false, true, false ));
+		market2.setQualification(new MarketQualification(4.8F, "Good salt"));
+		market2.setContact(new MarketContact("AZ@gmail.com", 245123L));
 
 		//DB
 
@@ -58,7 +89,7 @@ public class CrudMercadosApplication {
 
 		repository.save(market1);
 		repository.save(market2);
-		repository.save(market3);
+
 
 		System.out.println("Markets in the database " + repository.findAll().size());
 

@@ -7,59 +7,47 @@ import java.time.LocalTime;
 import java.util.Set;
 
 @Entity
-@Table(name = "Markets")//viendo la logica que estamos contruyento tal vez sea mejor el singular "Market" ya que en ralidad el el modelo de 1 mercado
 public class Markets {
+    
+    //Atributos
 
-    // Atributos
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String address; //
+    private boolean establishment;
+    private boolean onlyCash;
+    @Embedded
+    private MarketLocation location;
+    @Embedded
+    private MarketOperatingHours operatingHours;
+    @Embedded
+    private MarketProducts products;
+    @Embedded
+    private MarketQualification qualification;
+    @Embedded
+    private MarketContact contact;
 
-    //es bueno agrupar atributos por secciones
-    //con el refactor dimos el ejemplo, ya que pusimos  una sola variable global
-    //que contiene toda la info de los horarios del mercado y de los dias que tienen abierto
-    private Set<DayOfWeek> openingDays; //Dias en los que se presta el servicio,m se usa "Set" para asegurar que los días no se repitan
-    private LocalTime openingTime; // Hora de apertura
-    private LocalTime closingTime; // Horar de cierre
-    private boolean stationary; // Mercado fijo, que siempre está en el mismo lugar
-    private boolean itinerant; // Mercado no fijo
-    private boolean fruit;
-    private boolean porkMeat;
-    private boolean cowMeat;
-    private boolean fish;
-    private boolean vegetables;
-
-    //Constructores
+    //CONSTRUCTORS
 
     public Markets() {
     }
 
-    public Markets(Long id, String name, String address, Set<DayOfWeek> openingDays, LocalTime openingTime,
-                   LocalTime closingTime, boolean stationary, boolean itinerant, boolean fruit, boolean porkMeat,
-                   boolean cowMeat, boolean fish, boolean vegetables) {
+    public Markets(Long id, String name, boolean establishment, boolean onlyCash, MarketLocation location,
+                   MarketOperatingHours operatingHours, MarketProducts products, MarketQualification qualification,
+                   MarketContact contact) {
         this.id = id;
         this.name = name;
-        this.address = address;
-        this.openingDays = openingDays;
-        this.openingTime = openingTime;
-        this.closingTime = closingTime;
-        this.stationary = stationary;
-        this.itinerant = itinerant;
-        this.fruit = fruit;
-        this.porkMeat = porkMeat;
-        this.cowMeat = cowMeat;
-        this.fish = fish;
-        this.vegetables = vegetables;
+        this.establishment = establishment;
+        this.onlyCash = onlyCash;
+        this.location = location;
+        this.operatingHours = operatingHours;
+        this.products = products;
+        this.qualification = qualification;
+        this.contact = contact;
     }
-
-    //Getter & Setter
-
-    //aqui luego vamos a comenzar a validar cositas
-    //imagina que cuando hagamos codigo mas robusto no vamos a permitir hacer un set de una variable incorrecta
-    //asi por ejemplo a tu variable name no la vamos a permitir poner numeros ya que sabemos qu eno hay nombres con numeros
-
+    //GETTER AND SETTER
+    
     public Long getId() {
         return id;
     }
@@ -76,114 +64,76 @@ public class Markets {
         this.name = name;
     }
 
-    public String getAddress() {
-        return address;
+    public boolean isEstablishment() {
+        return establishment;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setEstablishment(boolean establishment) {
+        this.establishment = establishment;
     }
 
-    public Set<DayOfWeek> getOpeningDays() {
-        return openingDays;
+    public boolean isOnlyCash() {
+        return onlyCash;
     }
 
-    public void setOpeningDays(Set<DayOfWeek> openingDays) {
-        this.openingDays = openingDays;
+    public void setOnlyCash(boolean onlyCash) {
+        this.onlyCash = onlyCash;
     }
 
-    public LocalTime getOpeningTime() {
-        return openingTime;
+    public MarketLocation getLocation() {
+        return location;
     }
 
-    public void setOpeningTime(LocalTime openingTime) {
-        this.openingTime = openingTime;
+    public void setLocation(MarketLocation location) {
+        this.location = location;
     }
 
-    public LocalTime getClosingTime() {
-        return closingTime;
+    public MarketOperatingHours getOperatingHours() {
+        return operatingHours;
     }
 
-    public void setClosingTime(LocalTime closingTime) {
-        this.closingTime = closingTime;
+    public void setOperatingHours(MarketOperatingHours operatingHours) {
+        this.operatingHours = operatingHours;
     }
 
-    public boolean isStationary() {
-        return stationary;
+    public MarketProducts getProducts() {
+        return products;
     }
 
-    public void setStationary(boolean stationary) {
-        this.stationary = stationary;
+    public void setProducts(MarketProducts products) {
+        this.products = products;
     }
 
-    public boolean isItinerant() {
-        return itinerant;
+    public MarketQualification getQualification() {
+        return qualification;
     }
 
-    public void setItinerant(boolean itinerant) {
-        this.itinerant = itinerant;
+    public void setQualification(MarketQualification qualification) {
+        this.qualification = qualification;
     }
 
-    public boolean isFruit() {
-        return fruit;
+    public MarketContact getContact() {
+        return contact;
     }
 
-    public void setFruit(boolean fruit) {
-        this.fruit = fruit;
+    public void setContact(MarketContact contact) {
+        this.contact = contact;
     }
 
-    public boolean isPorkMeat() {
-        return porkMeat;
-    }
-
-    public void setPorkMeat(boolean porkMeat) {
-        this.porkMeat = porkMeat;
-    }
-
-    public boolean isCowMeat() {
-        return cowMeat;
-    }
-
-    public void setCowMeat(boolean cowMeat) {
-        this.cowMeat = cowMeat;
-    }
-
-    public boolean isFish() {
-        return fish;
-    }
-
-    public void setFish(boolean fish) {
-        this.fish = fish;
-    }
-
-    public boolean isVegetables() {
-        return vegetables;
-    }
-
-    public void setVegetables(boolean vegetables) {
-        this.vegetables = vegetables;
-    }
-
-
-    //ToString
-
+    //TO STRING
 
     @Override
     public String toString() {
         return "Markets{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                ", openingDays=" + openingDays +
-                ", openingTime=" + openingTime +
-                ", closingTime=" + closingTime +
-                ", stationary=" + stationary +
-                ", itinerant=" + itinerant +
-                ", fruit=" + fruit +
-                ", porkMeat=" + porkMeat +
-                ", cowMeat=" + cowMeat +
-                ", fish=" + fish +
-                ", vegetables=" + vegetables +
+                ", establishment=" + establishment +
+                ", onlyCash=" + onlyCash +
+                ", location=" + location +
+                ", operatingHours=" + operatingHours +
+                ", products=" + products +
+                ", qualification=" + qualification +
+                ", contact=" + contact +
                 '}';
     }
 }
