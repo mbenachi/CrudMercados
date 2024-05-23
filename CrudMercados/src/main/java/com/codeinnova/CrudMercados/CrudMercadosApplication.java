@@ -23,6 +23,7 @@ public class CrudMercadosApplication {
 		//Market1
 
 		Markets market1 = new Markets();
+		
 		market1.setName("Pedro Market");
 		market1.setEstablishment(true);
 		market1.setOnlyCash(false);
@@ -54,6 +55,7 @@ public class CrudMercadosApplication {
 
 		//Market2
 		Markets market2 = new Markets();
+
 		market2.setName("AZ Market");
 		market2.setEstablishment(false);
 		market2.setOnlyCash(true);
