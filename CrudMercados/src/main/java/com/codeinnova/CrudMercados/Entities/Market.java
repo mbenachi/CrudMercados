@@ -2,12 +2,8 @@ package com.codeinnova.CrudMercados.Entities;
 
 import jakarta.persistence.*;
 
-import java.time.DayOfWeek;
-import java.time.LocalTime;
-import java.util.Set;
-
 @Entity
-public class Markets {
+public class Market {
     
     //Atributos
 
@@ -30,12 +26,12 @@ public class Markets {
 
     //CONSTRUCTORS
 
-    public Markets() {
+    public Market() {
     }
 
-    public Markets(Long id, String name, boolean establishment, boolean onlyCash, MarketLocation location,
-                   MarketOperatingHours operatingHours, MarketProducts products, MarketQualification qualification,
-                   MarketContact contact) {
+    public Market(Long id, String name, boolean establishment, boolean onlyCash, MarketLocation location,
+                  MarketOperatingHours operatingHours, MarketProducts products, MarketQualification qualification,
+                  MarketContact contact) {
         this.id = id;
         this.name = name;
         this.establishment = establishment;

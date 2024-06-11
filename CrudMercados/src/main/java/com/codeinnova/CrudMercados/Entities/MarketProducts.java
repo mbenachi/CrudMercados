@@ -69,7 +69,7 @@ public class MarketProducts {
     private boolean queso;
     private boolean yogurt;
     private boolean mantequilla;
-    private boolean CremaDeLeche;
+    private boolean cremaDeLeche;
     private boolean lecheCondensada;
     private boolean helado;
     private boolean cuajada;
@@ -189,7 +189,7 @@ public class MarketProducts {
         this.queso = queso;
         this.yogurt = yogurt;
         this.mantequilla = mantequilla;
-        this.CremaDeLeche = CremaDeLeche;
+        this.cremaDeLeche = CremaDeLeche;
         this.lecheCondensada = lecheCondensada;
         this.helado = helado;
         this.cuajada = cuajada;
@@ -737,11 +737,11 @@ public class MarketProducts {
     }
 
     public boolean isCremaDeLeche() {
-        return CremaDeLeche;
+        return cremaDeLeche;
     }
 
     public void setCremaDeLeche(boolean cremaDeLeche) {
-        this.CremaDeLeche = cremaDeLeche;
+        this.cremaDeLeche = cremaDeLeche;
     }
 
     public boolean isLecheCondensada() {
@@ -984,6 +984,7 @@ public class MarketProducts {
         this.sal = sal;
     }
 
+
     //TOSTRING
 
 
@@ -1054,7 +1055,7 @@ public class MarketProducts {
                 ", cheese=" + queso +
                 ", yogurt=" + yogurt +
                 ", butter=" + mantequilla +
-                ", cream=" + CremaDeLeche +
+                ", cream=" + cremaDeLeche +
                 ", condensedMilk=" + lecheCondensada +
                 ", iceCream=" + helado +
                 ", curd=" + cuajada +
